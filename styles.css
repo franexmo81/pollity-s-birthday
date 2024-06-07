@@ -23,6 +23,7 @@ body {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   padding: 100px 50px;
   box-sizing: border-box;
   text-align: center;
