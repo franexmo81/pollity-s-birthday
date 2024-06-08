@@ -1,25 +1,25 @@
 window.addEventListener("DOMContentLoaded", () => {
-  checkWhatToDo();
+  timerUpdate();
   updatePage();
 });
 
 function updatePage() {
-  setInterval(checkWhatToDo, 1000);
+  setInterval(timerUpdate, 1000);
 }
 
-function checkWhatToDo() {
-  if (isTheEventToday()) {
-    celebrationPage();
-  } else {
-    timerUpdate();
-  }
-}
+// function checkWhatToDo() {
+//   if (isTheEventToday()) {
+//     celebrationPage();
+//   } else {
+//     timerUpdate();
+//   }
+// }
 
 const eventMonth = 5; //JavaScript counts months from 0 to 11
 const eventDay = 8;
 const eventHour = 10;
 const eventMinutes = 54;
-const eventSeconds = 00;
+const eventSeconds = 0;
 
 function timerUpdate() {
   let currentDate = new Date();
@@ -44,15 +44,18 @@ function timerUpdate() {
       eventSeconds
     );
   } else {
-    eventNextDate = new Date(
-      currentYear + 1,
-      eventMonth,
-      eventDay,
-      eventHour,
-      eventMinutes,
-      eventSeconds
-    );
-    celebrationPage();
+    if (isTheEventToday()) {
+      celebrationPage();
+    } else {
+      eventNextDate = new Date(
+        currentYear + 1,
+        eventMonth,
+        eventDay,
+        eventHour,
+        eventMinutes,
+        eventSeconds
+      );
+    }
   }
 
   let timeInSeconds = Math.round((eventNextDate - currentDate) / 1000);
@@ -69,12 +72,11 @@ function timerUpdate() {
 }
 
 function isTheEventToday() {
-  // let currentDate = new Date();
+  let currentDate = new Date();
 
-  // return (
-  //   currentDate.getDate() == eventDay && currentDate.getMonth() == eventMonth
-  // );
-  return false;
+  return (
+    currentDate.getDate() == eventDay && currentDate.getMonth() == eventMonth
+  );
 }
 
 function celebrationPage() {
