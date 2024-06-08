@@ -17,17 +17,42 @@ function checkWhatToDo() {
 
 const eventMonth = 5; //JavaScript counts months from 0 to 11
 const eventDay = 8;
+const eventHour = 10;
+const eventMinutes = 54;
+const eventSeconds = 00;
 
 function timerUpdate() {
   let currentDate = new Date();
   let currentYear = currentDate.getFullYear();
-  let eventThisYear = new Date(currentYear, eventMonth, eventDay, 0, 0, 0);
+  let eventThisYear = new Date(
+    currentYear,
+    eventMonth,
+    eventDay,
+    eventHour,
+    eventMinutes,
+    eventSeconds
+  );
   let eventNextDate;
 
   if (currentDate < eventThisYear) {
-    eventNextDate = new Date(currentYear, eventMonth, eventDay, 0, 0, 0);
+    eventNextDate = new Date(
+      currentYear,
+      eventMonth,
+      eventDay,
+      eventHour,
+      eventMinutes,
+      eventSeconds
+    );
   } else {
-    eventNextDate = new Date(currentYear + 1, eventMonth, eventDay, 0, 0, 0);
+    eventNextDate = new Date(
+      currentYear + 1,
+      eventMonth,
+      eventDay,
+      eventHour,
+      eventMinutes,
+      eventSeconds
+    );
+    celebrationPage();
   }
 
   let timeInSeconds = Math.round((eventNextDate - currentDate) / 1000);
@@ -44,11 +69,12 @@ function timerUpdate() {
 }
 
 function isTheEventToday() {
-  let currentDate = new Date();
+  // let currentDate = new Date();
 
-  return (
-    currentDate.getDate() == eventDay && currentDate.getMonth() == eventMonth
-  );
+  // return (
+  //   currentDate.getDate() == eventDay && currentDate.getMonth() == eventMonth
+  // );
+  return false;
 }
 
 function celebrationPage() {
